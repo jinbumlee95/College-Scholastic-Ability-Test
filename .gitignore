@@ -1,0 +1,14 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.taste-skill/
+shots/
+.local/
+*.tgz
+*.log
+*.zip
+.env
+.env.*
+!.env.example
+__pycache__/
+research-cache/

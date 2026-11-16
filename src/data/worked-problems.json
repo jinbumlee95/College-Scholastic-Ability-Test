@@ -1,0 +1,4106 @@
+[
+  {
+    "id": "2024-calculus-28",
+    "year": 2024,
+    "subject": "calculus",
+    "number": 28,
+    "shortTitle": "두 근의 관계로 오른쪽 그래프 복원하기",
+    "brief": "실수 전체에서 연속이고 f(x)≥0. 왼쪽 가지는 f(x)=-4xe^(4x²). 양의 높이의 두 근은 2g(t)+h(t)=k이며, 0부터 7까지의 넓이 조건으로 오른쪽 가지를 복원한다.",
+    "answer": "\\frac{f(9)}{f(8)}=\\frac43e^7",
+    "answerChoice": "②",
+    "source": {
+      "questionUrl": "https://wdown.ebsi.co.kr/W61001/01exam/20231116/go3/mathB_1_mun_13GC1N8A.pdf#page=11",
+      "solutionUrl": "https://wdown.ebsi.co.kr/W61001/01exam/20231116/go3/mathB_1_hsj_CF4SJVF9_2.pdf#page=18",
+      "answerUrl": "https://wdown.ebsi.co.kr/W61001/01exam/20231116/mobile/h3_m_mathB_1_ans_Y12674YF.png",
+      "questionPage": 11,
+      "solutionPage": 18,
+      "publisher": "한국교육과정평가원 문제 / EBSi 제공",
+      "form": "홀수형",
+      "checkedAt": "2026-11-16"
+    },
+    "scene": {
+      "kind": "level-set-affine",
+      "coordinates": "수학적 x-y 평면",
+      "parameters": {
+        "k": 5,
+        "level": 218.39260013257694,
+        "leftRoot": -1,
+        "rightRoot": 7
+      },
+      "functions": [
+        {
+          "id": "left",
+          "formula": "-4x\\exp(4x^2)",
+          "domain": {
+            "max": 0,
+            "maxInclusive": false
+          }
+        },
+        {
+          "id": "zero",
+          "formula": "0",
+          "domain": {
+            "min": 0,
+            "max": 5,
+            "minInclusive": true,
+            "maxInclusive": true
+          }
+        },
+        {
+          "id": "right",
+          "formula": "2(x-5)\\exp((x-5)^2)",
+          "domain": {
+            "min": 5,
+            "minInclusive": false
+          }
+        }
+      ],
+      "view": {
+        "x": [
+          -1.3,
+          7.5
+        ],
+        "y": [
+          0,
+          2.3
+        ],
+        "ordinateScale": 218.39260013257694,
+        "ordinateLabel": "y/(4e^4)"
+      },
+      "renderingNotes": [
+        "연속된 하나의 함수이지만 세 구간을 각각 샘플링한다. 가지 사이를 보간 선분으로 잇지 않는다.",
+        "0과 5에서 왼쪽/오른쪽 가지의 열린 점과 영구간의 닫힌 점을 의미상 분리한다. 최종 f의 점은 두 경계 모두 포함한다.",
+        "고정 높이 t에서 왼쪽 점 (u,t)를 (-2u+k,t)로 보내는 수평 변환이다. y값을 변환하거나 그래프를 위로 이동시키지 않는다.",
+        "calibrate 이전에는 오른쪽 경계와 근을 k, k-2u로 표기하고 오른쪽 가로축 수치 눈금을 숨긴다. 데이터의 k=5는 최종 모델 값이며 미지수를 이미 구한 것처럼 미리 표시하지 않는다.",
+        "큰 지수값을 화면에 담기 위해 세로좌표만 4e^4로 나눈다. 축에 이 스케일을 반드시 표시한다.",
+        "f(8),f(9)는 현재 세로 범위를 벗어나므로 마지막 단계는 대입값을 수식 카드로 보이며 점을 잘못된 화면 높이에 고정하지 않는다."
+      ]
+    },
+    "steps": [
+      {
+        "title": "왼쪽 가지와 경계",
+        "math": "f(x)=-4xe^{4x^2}\\ (x<0),\\quad f(0)=\\lim_{x\\to0^-}f(x)=0",
+        "explanation": "왼쪽 그래프는 높이 0으로 내려온다. 연속성 때문에 원점은 함수에 포함된다.",
+        "sceneState": {
+          "phase": "given",
+          "visible": [
+            "left",
+            "origin"
+          ],
+          "boundaryMarkers": true
+        }
+      },
+      {
+        "title": "같은 높이에서 두 근 찾기",
+        "math": "f(g(t))=f(h(t))=t,\\quad g(t)<0<h(t)",
+        "explanation": "수평선 하나가 만나는 두 점을 표시한다. 왼쪽 근과 오른쪽 근은 같은 함수값을 가진다.",
+        "sceneState": {
+          "phase": "roots",
+          "visible": [
+            "left",
+            "level",
+            "left-root",
+            "right-root"
+          ],
+          "level": 218.39260013257694,
+          "symbolicK": true,
+          "hideRightNumericTicks": true
+        }
+      },
+      {
+        "title": "근의 관계를 그래프 변환으로 읽기",
+        "math": "2g(t)+h(t)=k\\ \\Longleftrightarrow\\ h(t)=-2g(t)+k",
+        "explanation": "h(t)=-2g(t)+k이므로 왼쪽 점을 반사하고 가로로 두 배 늘린 뒤 k만큼 옮긴다. t→0⁺에서 g(t)→0⁻, h(t)>0이므로 k≥0이다.",
+        "sceneState": {
+          "phase": "affine",
+          "visible": [
+            "left",
+            "right",
+            "level",
+            "root-map"
+          ],
+          "affine": {
+            "xScale": -2,
+            "xTranslate": 5,
+            "yScale": 1
+          },
+          "symbolicK": true,
+          "hideRightNumericTicks": true
+        }
+      },
+      {
+        "title": "양의 가지 사이에는 영구간",
+        "math": "f(x)=\\begin{cases}-4xe^{4x^2}&x<0\\\\0&0\\le x\\le k\\\\2(x-k)e^{(x-k)^2}&x>k\\end{cases}",
+        "explanation": "x>k의 가지가 모든 양의 높이를 한 번씩 지난다. 중간 구간에서 양수가 나오면 세 번째 근이 생기므로 f≤0이다. 원문의 f≥0 조건을 함께 쓰면 중간 구간은 f=0이다.",
+        "sceneState": {
+          "phase": "zero-band",
+          "visible": [
+            "left",
+            "right",
+            "zero-band"
+          ],
+          "boundaryMarkers": true,
+          "symbolicK": true,
+          "hideRightNumericTicks": true
+        }
+      },
+      {
+        "title": "넓이로 이동량 결정",
+        "math": "\\int_0^7f(x)\\,dx=e^{(7-k)^2}-1=e^4-1\\ \\Longrightarrow\\ k=5",
+        "explanation": "주어진 넓이가 양수이므로 k<7이다. 따라서 7-k=2이며 영구간의 끝은 5다.",
+        "sceneState": {
+          "phase": "calibrate",
+          "visible": [
+            "left",
+            "right",
+            "zero-band",
+            "area"
+          ],
+          "area": {
+            "from": 5,
+            "to": 7
+          },
+          "k": 5
+        }
+      },
+      {
+        "title": "구간 경계 확인",
+        "math": "\\lim_{x\\to0^-}f(x)=f(0)=\\lim_{x\\to0^+}f(x)=0,\\quad\\lim_{x\\to5^-}f(x)=f(5)=\\lim_{x\\to5^+}f(x)=0",
+        "explanation": "0과 5에서 좌우 극한과 함수값이 일치한다. 영구간 양 끝의 점은 모두 포함된다.",
+        "sceneState": {
+          "phase": "boundary",
+          "visible": [
+            "left",
+            "right",
+            "zero-band",
+            "boundary-labels"
+          ],
+          "boundaryMarkers": true
+        }
+      },
+      {
+        "title": "두 함수값의 비",
+        "math": "\\frac{f(9)}{f(8)}=\\frac{8e^{16}}{6e^9}=\\frac43e^7",
+        "explanation": "오른쪽 가지에 9와 8을 각각 대입한다. 지수의 차가 7이 된다.",
+        "sceneState": {
+          "phase": "evaluate",
+          "visible": [
+            "left",
+            "right",
+            "zero-band",
+            "evaluation-labels"
+          ],
+          "evaluateAt": [
+            8,
+            9
+          ]
+        }
+      }
+    ],
+    "verification": {
+      "method": "원문 조건에서 독립 유도; 적분·근 관계·경계의 수치 검증",
+      "checks": [
+        "g(t)=u<0이면 h(t)=5-2u이고 두 가지의 함수값이 정확히 같다.",
+        "0~7의 적분은 exp(4)-1, f(9)/f(8)는 (4/3)exp(7).",
+        "양쪽 경계의 함수값과 좌우 극한은 모두 0."
+      ],
+      "notCopied": "EBS 해설 문장·도형을 복제하지 않은 독자 설명 및 좌표 모델"
+    }
+  },
+  {
+    "id": "2026-calculus-24",
+    "year": 2026,
+    "subject": "calculus",
+    "number": 24,
+    "shortTitle": "치환적분에서 면적 조각이 바뀌는 방법",
+    "brief": "0\\le x\\le\\pi/2에서 \\sqrt{\\sin x-\\sin^3x}의 정적분을 계산한다.",
+    "answer": "\\frac23",
+    "answerChoice": "④",
+    "source": {
+      "questionUrl": "https://wdown.ebsi.co.kr/W61001/01exam/20251113/go3/mathB_1_mun_OK7E1NAG.pdf#page=9",
+      "solutionUrl": "https://wdown.ebsi.co.kr/W61001/01exam/20251113/go3/mathB_1_hsj_1S5W7SZX_2.pdf#page=12",
+      "answerUrl": "https://wdown.ebsi.co.kr/W61001/01exam/20251113/mobile/h3_m_mathB_1_ans_YR8FF666.png",
+      "questionPage": 9,
+      "solutionPage": 12,
+      "publisher": "한국교육과정평가원 문제 / EBSi 제공",
+      "form": "홀수형",
+      "checkedAt": "2026-11-16"
+    },
+    "scene": {
+      "kind": "change-of-variables",
+      "parameters": {
+        "a": 0,
+        "b": 1.5707963267948966,
+        "sampleX": 0.7853981633974483,
+        "rectangles": 48
+      },
+      "original": {
+        "xLabel": "x",
+        "yLabel": "\\sqrt{\\sin x-\\sin^3x}",
+        "formula": "sqrt(sin(x))*cos(x)",
+        "domain": [
+          0,
+          1.5707963267948966
+        ]
+      },
+      "transformed": {
+        "xLabel": "u",
+        "yLabel": "\\sqrt u",
+        "formula": "sqrt(u)",
+        "domain": [
+          0,
+          1
+        ]
+      },
+      "map": {
+        "formula": "u=sin(x)",
+        "derivative": "du=cos(x) dx"
+      },
+      "view": {
+        "originalX": [
+          -0.08,
+          1.7
+        ],
+        "transformedX": [
+          -0.05,
+          1.1
+        ],
+        "y": [
+          -0.05,
+          1.15
+        ]
+      },
+      "renderingNotes": [
+        "왼쪽과 오른쪽 좌표계의 가로축은 각각 x와 u다. 두 그래프의 높이가 같다고 표시하지 않는다.",
+        "미소 띠의 높이와 폭을 함께 변환한다: 원래 높이 sqrt(sin x)cos x, 폭 dx; 변환 후 높이 sqrt(u), 폭 du.",
+        "유한 직사각형 합은 근사다. 슬라이더가 표시하는 근사 넓이와 정확값 2/3을 구분한다.",
+        "cos x의 비음수 조건을 확인한 뒤에만 절댓값을 제거한다."
+      ]
+    },
+    "steps": [
+      {
+        "title": "원래 곡선 아래의 넓이",
+        "math": "I=\\int_0^{\\pi/2}\\sqrt{\\sin x-\\sin^3x}\\,dx",
+        "explanation": "적분 구간을 고정하고 실제 피적분함수 아래를 채운다.",
+        "sceneState": {
+          "phase": "original",
+          "visible": [
+            "original-curve",
+            "original-area",
+            "bounds"
+          ]
+        }
+      },
+      {
+        "title": "제곱근 안 인수분해",
+        "math": "\\sin x-\\sin^3x=\\sin x(1-\\sin^2x)=\\sin x\\cos^2x",
+        "explanation": "항등식으로 식을 바꾸어도 같은 x에서 높이는 변하지 않는다.",
+        "sceneState": {
+          "phase": "factor",
+          "visible": [
+            "original-curve",
+            "original-area"
+          ],
+          "formulaVariant": "factorized"
+        }
+      },
+      {
+        "title": "구간으로 절댓값 판단",
+        "math": "\\sqrt{\\sin x\\cos^2x}=\\sqrt{\\sin x}|\\cos x|=\\sqrt{\\sin x}\\cos x",
+        "explanation": "현재 구간에서는 cos x가 0 이상이다. 따라서 절댓값을 그대로 cos x로 바꿀 수 있다.",
+        "sceneState": {
+          "phase": "sign",
+          "visible": [
+            "original-curve",
+            "cos-sign-band"
+          ],
+          "signInterval": [
+            0,
+            1.5707963267948966
+          ]
+        }
+      },
+      {
+        "title": "폭까지 함께 치환",
+        "math": "u=\\sin x,\\quad du=\\cos x\\,dx,\\quad x:0\\to\\pi/2\\ \\Rightarrow\\ u:0\\to1",
+        "explanation": "세로 높이의 cos x를 가로 폭의 변화량으로 옮긴다. 같은 면적 조각을 다른 좌표에서 본다.",
+        "sceneState": {
+          "phase": "substitution",
+          "visible": [
+            "original-curve",
+            "transformed-curve",
+            "differential-strips",
+            "mapping-arrow"
+          ],
+          "sampleX": 0.7853981633974483
+        }
+      },
+      {
+        "title": "새 좌표에서 적분",
+        "math": "I=\\int_0^1u^{1/2}\\,du=\\left[\\frac23u^{3/2}\\right]_0^1=\\frac23",
+        "explanation": "새 곡선은 √u이고 적분 경계는 0과 1이다. 넓이의 정확값은 2/3이다.",
+        "sceneState": {
+          "phase": "result",
+          "visible": [
+            "transformed-curve",
+            "transformed-area",
+            "bounds",
+            "result"
+          ],
+          "exactArea": 0.6666666666666666
+        }
+      }
+    ],
+    "verification": {
+      "method": "대수 항등식과 치환식 독립 검증; 두 적분 수치 적분 비교",
+      "checks": [
+        "0부터 π/2까지 cos x≥0.",
+        "원래 피적분함수와 sqrt(sin x)cos x의 값이 일치.",
+        "원래 적분과 치환 후 적분은 모두 2/3."
+      ],
+      "notCopied": "풀이 문장과 단계 구성을 독립 작성"
+    }
+  },
+  {
+    "id": "2025-geometry-27",
+    "year": 2025,
+    "subject": "geometry",
+    "number": 27,
+    "shortTitle": "내접원의 넓이를 보조단면으로 정사영하기",
+    "brief": "AB=6,\\ BC=4\\sqrt5. M은 BC의 중점, AMD는 정삼각형, BC\\perp(AMD). ACD의 내접원을 BCD 평면에 정사영한다.",
+    "answer": "\\frac{\\sqrt{10}}4\\pi",
+    "answerChoice": "①",
+    "source": {
+      "questionUrl": "https://wdown.ebsi.co.kr/W61001/01exam/20241114/go3/mathC_1_mun_E718C7I4.pdf#page=11",
+      "solutionUrl": "https://wdown.ebsi.co.kr/W61001/01exam/20241114/go3/mathC_1_hsj_RLY383PK_2.pdf#page=14",
+      "answerUrl": "https://wdown.ebsi.co.kr/W61001/01exam/20241114/mobile/h3_m_mathC_1_ans_6G46127J.png",
+      "questionPage": 11,
+      "solutionPage": 14,
+      "publisher": "한국교육과정평가원 문제 / EBSi 제공",
+      "form": "홀수형",
+      "checkedAt": "2026-11-16"
+    },
+    "scene": {
+      "kind": "incircle-projection",
+      "points": {
+        "M": [
+          0,
+          0,
+          0
+        ],
+        "B": [
+          -4.47213595499958,
+          0,
+          0
+        ],
+        "C": [
+          4.47213595499958,
+          0,
+          0
+        ],
+        "D": [
+          0,
+          4,
+          0
+        ],
+        "A": [
+          0,
+          2,
+          3.4641016151377544
+        ],
+        "Ap": [
+          0,
+          2,
+          0
+        ],
+        "H": [
+          0.9938079899999066,
+          3.111111111111111,
+          0
+        ],
+        "I": [
+          1.118033988749895,
+          2.25,
+          1.299038105676658
+        ],
+        "Ip": [
+          1.118033988749895,
+          2.25,
+          0
+        ]
+      },
+      "exactCoordinates": {
+        "M": "(0,0,0)",
+        "B": "(-2√5,0,0)",
+        "C": "(2√5,0,0)",
+        "D": "(0,4,0)",
+        "A": "(0,2,2√3)",
+        "Ap": "(0,2,0)",
+        "H": "(4√5/9,28/9,0)",
+        "I": "(√5/2,9/4,3√3/4)"
+      },
+      "faces": {
+        "AMD": [
+          "A",
+          "M",
+          "D"
+        ],
+        "ACD": [
+          "A",
+          "C",
+          "D"
+        ],
+        "BCD": [
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "targetPlane": {
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "constant": 0,
+        "label": "평면 BCD (z=0)"
+      },
+      "sourcePlane": {
+        "normal": [
+          0.6123724356957945,
+          0.6846531968814576,
+          0.39528470752104744
+        ],
+        "point": [
+          0,
+          2,
+          3.4641016151377544
+        ],
+        "label": "평면 ACD"
+      },
+      "circle": {
+        "center": [
+          1.118033988749895,
+          2.25,
+          1.299038105676658
+        ],
+        "radius": 1.4142135623730951,
+        "basisU": [
+          0,
+          0.5,
+          -0.8660254037844386
+        ],
+        "basisV": [
+          -0.7905694150420949,
+          0.5303300858899107,
+          0.30618621784789724
+        ]
+      },
+      "projection": {
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "map": "(x,y,z) -> (x,y,0)",
+        "semiMajor": 1.4142135623730951,
+        "semiMinor": 0.5590169943749475
+      },
+      "auxiliarySection": {
+        "points": [
+          "A",
+          "Ap",
+          "H"
+        ],
+        "perpendicularTo": [
+          "C",
+          "D"
+        ]
+      },
+      "renderingNotes": [
+        "원은 평면 ACD 안에 놓고 중심은 I로 한다. 삼각형 무게중심과 혼동하지 않는다.",
+        "보조단면 A-A′-H는 공통 모서리 CD와 수직이다. H는 A에서 CD로 내린 수선의 발이다.",
+        "정사영 선분은 z축과 평행하다. 카메라 시선 방향으로 투영하지 않는다.",
+        "원을 타원으로 옮기는 중간 상태는 z좌표에 (1-progress)를 곱한다. 최종 투영 대상은 z=0이다.",
+        "원의 넓이에 곱하는 계수는 cos θ이며, θ는 두 평면의 예각이다."
+      ]
+    },
+    "steps": [
+      {
+        "title": "입체와 수직 조건 배치",
+        "math": "BM=CM=2\\sqrt5,\\quad BC\\perp\\text{평면 }AMD",
+        "explanation": "BC를 가로축에 놓고 정삼각형 AMD를 수직 평면에 세운다. 목표 투영면은 바닥 BCD다.",
+        "sceneState": {
+          "phase": "solid",
+          "visible": [
+            "tetrahedron",
+            "AMD",
+            "BCD",
+            "M",
+            "right-angle-M"
+          ]
+        }
+      },
+      {
+        "title": "정삼각형의 한 변",
+        "math": "AM=\\sqrt{AB^2-BM^2}=\\sqrt{36-20}=4,\\quad AD=DM=4",
+        "explanation": "직각삼각형 ABM에서 AM을 구한다. 정삼각형의 나머지 두 변도 4다.",
+        "sceneState": {
+          "phase": "right-triangle",
+          "visible": [
+            "tetrahedron",
+            "ABM",
+            "AMD",
+            "length-labels"
+          ]
+        }
+      },
+      {
+        "title": "내접원의 반지름",
+        "math": "AC=CD=6,\\quad [ACD]=8\\sqrt2,\\quad s=8,\\quad r=\\frac{[ACD]}s=\\sqrt2",
+        "explanation": "ACD는 변의 길이가 6, 6, 4인 이등변삼각형이다. 넓이를 반둘레로 나누어 내접원 반지름을 얻는다.",
+        "sceneState": {
+          "phase": "incircle",
+          "visible": [
+            "ACD",
+            "incircle",
+            "incenter",
+            "radius"
+          ],
+          "circleOpacity": 1
+        }
+      },
+      {
+        "title": "두 평면의 각을 단면으로 보기",
+        "math": "AH\\perp CD,\\quad A'H\\perp CD,\\quad \\cos\\theta=\\frac{A'H}{AH}=\\frac{2\\sqrt5/3}{8\\sqrt2/3}=\\frac{\\sqrt{10}}8",
+        "explanation": "A에서 바닥으로 내린 점 A′와 모서리 위의 발 H를 연결한다. 삼각형 AA′H 안에서 평면 사이의 각이 드러난다.",
+        "sceneState": {
+          "phase": "dihedral",
+          "visible": [
+            "ACD",
+            "BCD",
+            "incircle",
+            "auxiliary-section",
+            "H",
+            "Ap",
+            "angle-theta"
+          ],
+          "cameraHint": "face auxiliary section"
+        }
+      },
+      {
+        "title": "원 위의 각 점을 수직으로 내리기",
+        "math": "(x,y,z)\\longmapsto(x,y,0),\\qquad S_{\\rm projection}=\\pi r^2\\cos\\theta",
+        "explanation": "원의 모든 점을 바닥에 수직으로 내린다. 원은 장반경 √2, 단반경 √5/4인 타원이 된다.",
+        "sceneState": {
+          "phase": "project",
+          "visible": [
+            "ACD",
+            "BCD",
+            "incircle",
+            "projection-rays",
+            "ellipse"
+          ],
+          "projectionProgress": 1
+        }
+      },
+      {
+        "title": "정사영 넓이 계산",
+        "math": "S=\\pi\\cdot2\\cdot\\frac{\\sqrt{10}}8=\\frac{\\sqrt{10}}4\\pi",
+        "explanation": "원래 넓이 2π에 평면 기울기의 계수를 곱한다.",
+        "sceneState": {
+          "phase": "result",
+          "visible": [
+            "BCD",
+            "ellipse",
+            "result"
+          ],
+          "projectionProgress": 1,
+          "exactArea": 2.4836470664490253
+        }
+      }
+    ],
+    "verification": {
+      "method": "좌표를 독립 구성하고 변 길이·평면 법선·내접원·투영 넓이 수치 검증",
+      "checks": [
+        "AB=AC=CD=6, AM=MD=AD=4, BC=4√5.",
+        "I에서 ACD의 세 변까지의 거리는 모두 √2.",
+        "단위 법선의 z성분은 √10/8; 투영 타원의 넓이는 π√10/4."
+      ],
+      "notCopied": "원문의 도형을 복제하지 않은 독립 좌표 구성"
+    }
+  },
+  {
+    "id": "2024-probability-28",
+    "year": 2024,
+    "subject": "probability",
+    "number": 28,
+    "shortTitle": "조건부확률은 표본공간을 다시 고르는 일",
+    "brief": "1~4 카드를 복원추출해 네 번 시행한다. 1은 공 1개(흰색), 2·3은 2개(검정 1개), 4는 3개(검정 1개)를 옮긴다. 총 8개라는 조건에서 검정 2개의 확률을 구한다.",
+    "answer": "\\frac3{35}",
+    "answerChoice": "④",
+    "source": {
+      "questionUrl": "https://wdown.ebsi.co.kr/W61001/01exam/20231116/go3/mathA_1_mun_Y38J49IY.pdf#page=11",
+      "solutionUrl": "https://wdown.ebsi.co.kr/W61001/01exam/20231116/go3/mathA_1_hsj_GTAPCV2P_3.pdf#page=17",
+      "answerUrl": "https://wdown.ebsi.co.kr/W61001/01exam/20231116/mobile/h3_m_mathA_1_ans_7BZ5S89B.png",
+      "questionPage": 11,
+      "solutionPage": 17,
+      "publisher": "한국교육과정평가원 문제 / EBSi 제공",
+      "form": "홀수형",
+      "checkedAt": "2026-11-16"
+    },
+    "scene": {
+      "kind": "conditional-outcome-grid",
+      "grid": {
+        "rows": 16,
+        "columns": 16,
+        "indexOrder": "lexicographic base 4"
+      },
+      "outcomes": [
+        {
+          "index": 0,
+          "draws": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "totalBalls": 4,
+          "blackBalls": 0,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 1,
+          "draws": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "totalBalls": 5,
+          "blackBalls": 1,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 2,
+          "draws": [
+            1,
+            1,
+            1,
+            3
+          ],
+          "totalBalls": 5,
+          "blackBalls": 1,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 3,
+          "draws": [
+            1,
+            1,
+            1,
+            4
+          ],
+          "totalBalls": 6,
+          "blackBalls": 1,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 4,
+          "draws": [
+            1,
+            1,
+            2,
+            1
+          ],
+          "totalBalls": 5,
+          "blackBalls": 1,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 5,
+          "draws": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 6,
+          "draws": [
+            1,
+            1,
+            2,
+            3
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 7,
+          "draws": [
+            1,
+            1,
+            2,
+            4
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 8,
+          "draws": [
+            1,
+            1,
+            3,
+            1
+          ],
+          "totalBalls": 5,
+          "blackBalls": 1,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 9,
+          "draws": [
+            1,
+            1,
+            3,
+            2
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 10,
+          "draws": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 11,
+          "draws": [
+            1,
+            1,
+            3,
+            4
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 12,
+          "draws": [
+            1,
+            1,
+            4,
+            1
+          ],
+          "totalBalls": 6,
+          "blackBalls": 1,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 13,
+          "draws": [
+            1,
+            1,
+            4,
+            2
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 14,
+          "draws": [
+            1,
+            1,
+            4,
+            3
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 15,
+          "draws": [
+            1,
+            1,
+            4,
+            4
+          ],
+          "totalBalls": 8,
+          "blackBalls": 2,
+          "condition": true,
+          "success": true
+        },
+        {
+          "index": 16,
+          "draws": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "totalBalls": 5,
+          "blackBalls": 1,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 17,
+          "draws": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 18,
+          "draws": [
+            1,
+            2,
+            1,
+            3
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 19,
+          "draws": [
+            1,
+            2,
+            1,
+            4
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 20,
+          "draws": [
+            1,
+            2,
+            2,
+            1
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 21,
+          "draws": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 22,
+          "draws": [
+            1,
+            2,
+            2,
+            3
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 23,
+          "draws": [
+            1,
+            2,
+            2,
+            4
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 24,
+          "draws": [
+            1,
+            2,
+            3,
+            1
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 25,
+          "draws": [
+            1,
+            2,
+            3,
+            2
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 26,
+          "draws": [
+            1,
+            2,
+            3,
+            3
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 27,
+          "draws": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 28,
+          "draws": [
+            1,
+            2,
+            4,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 29,
+          "draws": [
+            1,
+            2,
+            4,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 30,
+          "draws": [
+            1,
+            2,
+            4,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 31,
+          "draws": [
+            1,
+            2,
+            4,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 32,
+          "draws": [
+            1,
+            3,
+            1,
+            1
+          ],
+          "totalBalls": 5,
+          "blackBalls": 1,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 33,
+          "draws": [
+            1,
+            3,
+            1,
+            2
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 34,
+          "draws": [
+            1,
+            3,
+            1,
+            3
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 35,
+          "draws": [
+            1,
+            3,
+            1,
+            4
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 36,
+          "draws": [
+            1,
+            3,
+            2,
+            1
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 37,
+          "draws": [
+            1,
+            3,
+            2,
+            2
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 38,
+          "draws": [
+            1,
+            3,
+            2,
+            3
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 39,
+          "draws": [
+            1,
+            3,
+            2,
+            4
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 40,
+          "draws": [
+            1,
+            3,
+            3,
+            1
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 41,
+          "draws": [
+            1,
+            3,
+            3,
+            2
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 42,
+          "draws": [
+            1,
+            3,
+            3,
+            3
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 43,
+          "draws": [
+            1,
+            3,
+            3,
+            4
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 44,
+          "draws": [
+            1,
+            3,
+            4,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 45,
+          "draws": [
+            1,
+            3,
+            4,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 46,
+          "draws": [
+            1,
+            3,
+            4,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 47,
+          "draws": [
+            1,
+            3,
+            4,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 48,
+          "draws": [
+            1,
+            4,
+            1,
+            1
+          ],
+          "totalBalls": 6,
+          "blackBalls": 1,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 49,
+          "draws": [
+            1,
+            4,
+            1,
+            2
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 50,
+          "draws": [
+            1,
+            4,
+            1,
+            3
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 51,
+          "draws": [
+            1,
+            4,
+            1,
+            4
+          ],
+          "totalBalls": 8,
+          "blackBalls": 2,
+          "condition": true,
+          "success": true
+        },
+        {
+          "index": 52,
+          "draws": [
+            1,
+            4,
+            2,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 53,
+          "draws": [
+            1,
+            4,
+            2,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 54,
+          "draws": [
+            1,
+            4,
+            2,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 55,
+          "draws": [
+            1,
+            4,
+            2,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 56,
+          "draws": [
+            1,
+            4,
+            3,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 57,
+          "draws": [
+            1,
+            4,
+            3,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 58,
+          "draws": [
+            1,
+            4,
+            3,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 59,
+          "draws": [
+            1,
+            4,
+            3,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 60,
+          "draws": [
+            1,
+            4,
+            4,
+            1
+          ],
+          "totalBalls": 8,
+          "blackBalls": 2,
+          "condition": true,
+          "success": true
+        },
+        {
+          "index": 61,
+          "draws": [
+            1,
+            4,
+            4,
+            2
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 62,
+          "draws": [
+            1,
+            4,
+            4,
+            3
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 63,
+          "draws": [
+            1,
+            4,
+            4,
+            4
+          ],
+          "totalBalls": 10,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 64,
+          "draws": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "totalBalls": 5,
+          "blackBalls": 1,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 65,
+          "draws": [
+            2,
+            1,
+            1,
+            2
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 66,
+          "draws": [
+            2,
+            1,
+            1,
+            3
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 67,
+          "draws": [
+            2,
+            1,
+            1,
+            4
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 68,
+          "draws": [
+            2,
+            1,
+            2,
+            1
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 69,
+          "draws": [
+            2,
+            1,
+            2,
+            2
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 70,
+          "draws": [
+            2,
+            1,
+            2,
+            3
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 71,
+          "draws": [
+            2,
+            1,
+            2,
+            4
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 72,
+          "draws": [
+            2,
+            1,
+            3,
+            1
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 73,
+          "draws": [
+            2,
+            1,
+            3,
+            2
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 74,
+          "draws": [
+            2,
+            1,
+            3,
+            3
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 75,
+          "draws": [
+            2,
+            1,
+            3,
+            4
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 76,
+          "draws": [
+            2,
+            1,
+            4,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 77,
+          "draws": [
+            2,
+            1,
+            4,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 78,
+          "draws": [
+            2,
+            1,
+            4,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 79,
+          "draws": [
+            2,
+            1,
+            4,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 80,
+          "draws": [
+            2,
+            2,
+            1,
+            1
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 81,
+          "draws": [
+            2,
+            2,
+            1,
+            2
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 82,
+          "draws": [
+            2,
+            2,
+            1,
+            3
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 83,
+          "draws": [
+            2,
+            2,
+            1,
+            4
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 84,
+          "draws": [
+            2,
+            2,
+            2,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 85,
+          "draws": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 4,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 86,
+          "draws": [
+            2,
+            2,
+            2,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 4,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 87,
+          "draws": [
+            2,
+            2,
+            2,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 88,
+          "draws": [
+            2,
+            2,
+            3,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 89,
+          "draws": [
+            2,
+            2,
+            3,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 4,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 90,
+          "draws": [
+            2,
+            2,
+            3,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 4,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 91,
+          "draws": [
+            2,
+            2,
+            3,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 92,
+          "draws": [
+            2,
+            2,
+            4,
+            1
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 93,
+          "draws": [
+            2,
+            2,
+            4,
+            2
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 94,
+          "draws": [
+            2,
+            2,
+            4,
+            3
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 95,
+          "draws": [
+            2,
+            2,
+            4,
+            4
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 96,
+          "draws": [
+            2,
+            3,
+            1,
+            1
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 97,
+          "draws": [
+            2,
+            3,
+            1,
+            2
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 98,
+          "draws": [
+            2,
+            3,
+            1,
+            3
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 99,
+          "draws": [
+            2,
+            3,
+            1,
+            4
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 100,
+          "draws": [
+            2,
+            3,
+            2,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 101,
+          "draws": [
+            2,
+            3,
+            2,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 4,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 102,
+          "draws": [
+            2,
+            3,
+            2,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 4,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 103,
+          "draws": [
+            2,
+            3,
+            2,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 104,
+          "draws": [
+            2,
+            3,
+            3,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 105,
+          "draws": [
+            2,
+            3,
+            3,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 4,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 106,
+          "draws": [
+            2,
+            3,
+            3,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 4,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 107,
+          "draws": [
+            2,
+            3,
+            3,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 108,
+          "draws": [
+            2,
+            3,
+            4,
+            1
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 109,
+          "draws": [
+            2,
+            3,
+            4,
+            2
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 110,
+          "draws": [
+            2,
+            3,
+            4,
+            3
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 111,
+          "draws": [
+            2,
+            3,
+            4,
+            4
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 112,
+          "draws": [
+            2,
+            4,
+            1,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 113,
+          "draws": [
+            2,
+            4,
+            1,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 114,
+          "draws": [
+            2,
+            4,
+            1,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 115,
+          "draws": [
+            2,
+            4,
+            1,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 116,
+          "draws": [
+            2,
+            4,
+            2,
+            1
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 117,
+          "draws": [
+            2,
+            4,
+            2,
+            2
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 118,
+          "draws": [
+            2,
+            4,
+            2,
+            3
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 119,
+          "draws": [
+            2,
+            4,
+            2,
+            4
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 120,
+          "draws": [
+            2,
+            4,
+            3,
+            1
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 121,
+          "draws": [
+            2,
+            4,
+            3,
+            2
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 122,
+          "draws": [
+            2,
+            4,
+            3,
+            3
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 123,
+          "draws": [
+            2,
+            4,
+            3,
+            4
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 124,
+          "draws": [
+            2,
+            4,
+            4,
+            1
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 125,
+          "draws": [
+            2,
+            4,
+            4,
+            2
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 126,
+          "draws": [
+            2,
+            4,
+            4,
+            3
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 127,
+          "draws": [
+            2,
+            4,
+            4,
+            4
+          ],
+          "totalBalls": 11,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 128,
+          "draws": [
+            3,
+            1,
+            1,
+            1
+          ],
+          "totalBalls": 5,
+          "blackBalls": 1,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 129,
+          "draws": [
+            3,
+            1,
+            1,
+            2
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 130,
+          "draws": [
+            3,
+            1,
+            1,
+            3
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 131,
+          "draws": [
+            3,
+            1,
+            1,
+            4
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 132,
+          "draws": [
+            3,
+            1,
+            2,
+            1
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 133,
+          "draws": [
+            3,
+            1,
+            2,
+            2
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 134,
+          "draws": [
+            3,
+            1,
+            2,
+            3
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 135,
+          "draws": [
+            3,
+            1,
+            2,
+            4
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 136,
+          "draws": [
+            3,
+            1,
+            3,
+            1
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 137,
+          "draws": [
+            3,
+            1,
+            3,
+            2
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 138,
+          "draws": [
+            3,
+            1,
+            3,
+            3
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 139,
+          "draws": [
+            3,
+            1,
+            3,
+            4
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 140,
+          "draws": [
+            3,
+            1,
+            4,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 141,
+          "draws": [
+            3,
+            1,
+            4,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 142,
+          "draws": [
+            3,
+            1,
+            4,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 143,
+          "draws": [
+            3,
+            1,
+            4,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 144,
+          "draws": [
+            3,
+            2,
+            1,
+            1
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 145,
+          "draws": [
+            3,
+            2,
+            1,
+            2
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 146,
+          "draws": [
+            3,
+            2,
+            1,
+            3
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 147,
+          "draws": [
+            3,
+            2,
+            1,
+            4
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 148,
+          "draws": [
+            3,
+            2,
+            2,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 149,
+          "draws": [
+            3,
+            2,
+            2,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 4,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 150,
+          "draws": [
+            3,
+            2,
+            2,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 4,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 151,
+          "draws": [
+            3,
+            2,
+            2,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 152,
+          "draws": [
+            3,
+            2,
+            3,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 153,
+          "draws": [
+            3,
+            2,
+            3,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 4,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 154,
+          "draws": [
+            3,
+            2,
+            3,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 4,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 155,
+          "draws": [
+            3,
+            2,
+            3,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 156,
+          "draws": [
+            3,
+            2,
+            4,
+            1
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 157,
+          "draws": [
+            3,
+            2,
+            4,
+            2
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 158,
+          "draws": [
+            3,
+            2,
+            4,
+            3
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 159,
+          "draws": [
+            3,
+            2,
+            4,
+            4
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 160,
+          "draws": [
+            3,
+            3,
+            1,
+            1
+          ],
+          "totalBalls": 6,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 161,
+          "draws": [
+            3,
+            3,
+            1,
+            2
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 162,
+          "draws": [
+            3,
+            3,
+            1,
+            3
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 163,
+          "draws": [
+            3,
+            3,
+            1,
+            4
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 164,
+          "draws": [
+            3,
+            3,
+            2,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 165,
+          "draws": [
+            3,
+            3,
+            2,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 4,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 166,
+          "draws": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 4,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 167,
+          "draws": [
+            3,
+            3,
+            2,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 168,
+          "draws": [
+            3,
+            3,
+            3,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 169,
+          "draws": [
+            3,
+            3,
+            3,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 4,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 170,
+          "draws": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 4,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 171,
+          "draws": [
+            3,
+            3,
+            3,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 172,
+          "draws": [
+            3,
+            3,
+            4,
+            1
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 173,
+          "draws": [
+            3,
+            3,
+            4,
+            2
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 174,
+          "draws": [
+            3,
+            3,
+            4,
+            3
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 175,
+          "draws": [
+            3,
+            3,
+            4,
+            4
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 176,
+          "draws": [
+            3,
+            4,
+            1,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 177,
+          "draws": [
+            3,
+            4,
+            1,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 178,
+          "draws": [
+            3,
+            4,
+            1,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 179,
+          "draws": [
+            3,
+            4,
+            1,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 180,
+          "draws": [
+            3,
+            4,
+            2,
+            1
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 181,
+          "draws": [
+            3,
+            4,
+            2,
+            2
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 182,
+          "draws": [
+            3,
+            4,
+            2,
+            3
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 183,
+          "draws": [
+            3,
+            4,
+            2,
+            4
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 184,
+          "draws": [
+            3,
+            4,
+            3,
+            1
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 185,
+          "draws": [
+            3,
+            4,
+            3,
+            2
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 186,
+          "draws": [
+            3,
+            4,
+            3,
+            3
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 187,
+          "draws": [
+            3,
+            4,
+            3,
+            4
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 188,
+          "draws": [
+            3,
+            4,
+            4,
+            1
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 189,
+          "draws": [
+            3,
+            4,
+            4,
+            2
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 190,
+          "draws": [
+            3,
+            4,
+            4,
+            3
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 191,
+          "draws": [
+            3,
+            4,
+            4,
+            4
+          ],
+          "totalBalls": 11,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 192,
+          "draws": [
+            4,
+            1,
+            1,
+            1
+          ],
+          "totalBalls": 6,
+          "blackBalls": 1,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 193,
+          "draws": [
+            4,
+            1,
+            1,
+            2
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 194,
+          "draws": [
+            4,
+            1,
+            1,
+            3
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 195,
+          "draws": [
+            4,
+            1,
+            1,
+            4
+          ],
+          "totalBalls": 8,
+          "blackBalls": 2,
+          "condition": true,
+          "success": true
+        },
+        {
+          "index": 196,
+          "draws": [
+            4,
+            1,
+            2,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 197,
+          "draws": [
+            4,
+            1,
+            2,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 198,
+          "draws": [
+            4,
+            1,
+            2,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 199,
+          "draws": [
+            4,
+            1,
+            2,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 200,
+          "draws": [
+            4,
+            1,
+            3,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 201,
+          "draws": [
+            4,
+            1,
+            3,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 202,
+          "draws": [
+            4,
+            1,
+            3,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 203,
+          "draws": [
+            4,
+            1,
+            3,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 204,
+          "draws": [
+            4,
+            1,
+            4,
+            1
+          ],
+          "totalBalls": 8,
+          "blackBalls": 2,
+          "condition": true,
+          "success": true
+        },
+        {
+          "index": 205,
+          "draws": [
+            4,
+            1,
+            4,
+            2
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 206,
+          "draws": [
+            4,
+            1,
+            4,
+            3
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 207,
+          "draws": [
+            4,
+            1,
+            4,
+            4
+          ],
+          "totalBalls": 10,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 208,
+          "draws": [
+            4,
+            2,
+            1,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 209,
+          "draws": [
+            4,
+            2,
+            1,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 210,
+          "draws": [
+            4,
+            2,
+            1,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 211,
+          "draws": [
+            4,
+            2,
+            1,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 212,
+          "draws": [
+            4,
+            2,
+            2,
+            1
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 213,
+          "draws": [
+            4,
+            2,
+            2,
+            2
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 214,
+          "draws": [
+            4,
+            2,
+            2,
+            3
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 215,
+          "draws": [
+            4,
+            2,
+            2,
+            4
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 216,
+          "draws": [
+            4,
+            2,
+            3,
+            1
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 217,
+          "draws": [
+            4,
+            2,
+            3,
+            2
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 218,
+          "draws": [
+            4,
+            2,
+            3,
+            3
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 219,
+          "draws": [
+            4,
+            2,
+            3,
+            4
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 220,
+          "draws": [
+            4,
+            2,
+            4,
+            1
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 221,
+          "draws": [
+            4,
+            2,
+            4,
+            2
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 222,
+          "draws": [
+            4,
+            2,
+            4,
+            3
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 223,
+          "draws": [
+            4,
+            2,
+            4,
+            4
+          ],
+          "totalBalls": 11,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 224,
+          "draws": [
+            4,
+            3,
+            1,
+            1
+          ],
+          "totalBalls": 7,
+          "blackBalls": 2,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 225,
+          "draws": [
+            4,
+            3,
+            1,
+            2
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 226,
+          "draws": [
+            4,
+            3,
+            1,
+            3
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 227,
+          "draws": [
+            4,
+            3,
+            1,
+            4
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 228,
+          "draws": [
+            4,
+            3,
+            2,
+            1
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 229,
+          "draws": [
+            4,
+            3,
+            2,
+            2
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 230,
+          "draws": [
+            4,
+            3,
+            2,
+            3
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 231,
+          "draws": [
+            4,
+            3,
+            2,
+            4
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 232,
+          "draws": [
+            4,
+            3,
+            3,
+            1
+          ],
+          "totalBalls": 8,
+          "blackBalls": 3,
+          "condition": true,
+          "success": false
+        },
+        {
+          "index": 233,
+          "draws": [
+            4,
+            3,
+            3,
+            2
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 234,
+          "draws": [
+            4,
+            3,
+            3,
+            3
+          ],
+          "totalBalls": 9,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 235,
+          "draws": [
+            4,
+            3,
+            3,
+            4
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 236,
+          "draws": [
+            4,
+            3,
+            4,
+            1
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 237,
+          "draws": [
+            4,
+            3,
+            4,
+            2
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 238,
+          "draws": [
+            4,
+            3,
+            4,
+            3
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 239,
+          "draws": [
+            4,
+            3,
+            4,
+            4
+          ],
+          "totalBalls": 11,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 240,
+          "draws": [
+            4,
+            4,
+            1,
+            1
+          ],
+          "totalBalls": 8,
+          "blackBalls": 2,
+          "condition": true,
+          "success": true
+        },
+        {
+          "index": 241,
+          "draws": [
+            4,
+            4,
+            1,
+            2
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 242,
+          "draws": [
+            4,
+            4,
+            1,
+            3
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 243,
+          "draws": [
+            4,
+            4,
+            1,
+            4
+          ],
+          "totalBalls": 10,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 244,
+          "draws": [
+            4,
+            4,
+            2,
+            1
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 245,
+          "draws": [
+            4,
+            4,
+            2,
+            2
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 246,
+          "draws": [
+            4,
+            4,
+            2,
+            3
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 247,
+          "draws": [
+            4,
+            4,
+            2,
+            4
+          ],
+          "totalBalls": 11,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 248,
+          "draws": [
+            4,
+            4,
+            3,
+            1
+          ],
+          "totalBalls": 9,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 249,
+          "draws": [
+            4,
+            4,
+            3,
+            2
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 250,
+          "draws": [
+            4,
+            4,
+            3,
+            3
+          ],
+          "totalBalls": 10,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 251,
+          "draws": [
+            4,
+            4,
+            3,
+            4
+          ],
+          "totalBalls": 11,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 252,
+          "draws": [
+            4,
+            4,
+            4,
+            1
+          ],
+          "totalBalls": 10,
+          "blackBalls": 3,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 253,
+          "draws": [
+            4,
+            4,
+            4,
+            2
+          ],
+          "totalBalls": 11,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 254,
+          "draws": [
+            4,
+            4,
+            4,
+            3
+          ],
+          "totalBalls": 11,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        },
+        {
+          "index": 255,
+          "draws": [
+            4,
+            4,
+            4,
+            4
+          ],
+          "totalBalls": 12,
+          "blackBalls": 4,
+          "condition": false,
+          "success": false
+        }
+      ],
+      "conditions": {
+        "E": "totalBalls == 8",
+        "F": "blackBalls == 2"
+      },
+      "groups": [
+        {
+          "oneBallDraws": 0,
+          "twoBallDraws": 4,
+          "threeBallDraws": 0,
+          "count": 16,
+          "blackBalls": 4
+        },
+        {
+          "oneBallDraws": 1,
+          "twoBallDraws": 2,
+          "threeBallDraws": 1,
+          "count": 48,
+          "blackBalls": 3
+        },
+        {
+          "oneBallDraws": 2,
+          "twoBallDraws": 0,
+          "threeBallDraws": 2,
+          "count": 6,
+          "blackBalls": 2
+        }
+      ],
+      "renderingNotes": [
+        "작은 블록 하나는 1~4 카드의 길이 4인 순서열 하나다. 256블록은 모두 같은 확률이다.",
+        "2와 3은 공 이동 결과가 같아도 별개의 카드 결과다. 둘을 합친 범주에는 가중치 2가 필요하다.",
+        "조건 E를 적용하면 원래 블록의 위치를 유지하며 186개를 흐리게 한다. 남은 70개를 분모로 삼는다.",
+        "교집합 6개는 모두 1과 4가 각각 두 번 나오는 순서열이다. 선택한 블록의 카드순서와 공 개수를 툴팁에 표시한다."
+      ]
+    },
+    "steps": [
+      {
+        "title": "같은 확률의 256개 결과",
+        "math": "|\\Omega|=4^4=256",
+        "explanation": "복원추출이므로 매회 네 카드의 확률은 같다. 네 번의 카드 순서를 블록 하나로 나타낸다.",
+        "sceneState": {
+          "phase": "all",
+          "visible": [
+            "all-outcomes"
+          ],
+          "highlight": "none",
+          "denominator": 256
+        }
+      },
+      {
+        "title": "공 개수를 식으로 바꾸기",
+        "math": "n_1+n_2+n_3=4,\\quad n_1+2n_2+3n_3=8\\ \\Rightarrow\\ n_1=n_3",
+        "explanation": "1개, 2개, 3개를 옮긴 횟수로 묶는다. 합이 8이 되려면 1개를 옮긴 횟수와 3개를 옮긴 횟수가 같다.",
+        "sceneState": {
+          "phase": "counts",
+          "visible": [
+            "all-outcomes",
+            "case-groups"
+          ],
+          "highlight": "E"
+        }
+      },
+      {
+        "title": "조건을 만족하는 70개만 남기기",
+        "math": "|E|=2^4+\\frac{4!}{1!2!1!}2^2+\\frac{4!}{2!2!}=16+48+6=70",
+        "explanation": "2개를 옮기는 시행에는 카드 2와 3의 두 선택이 있다. 각 경우에 이 가중치를 넣는다.",
+        "sceneState": {
+          "phase": "condition",
+          "visible": [
+            "condition-outcomes",
+            "case-groups"
+          ],
+          "highlight": "E",
+          "denominator": 70
+        }
+      },
+      {
+        "title": "그중 검정 공이 2개인 결과",
+        "math": "|E\\cap F|=\\frac{4!}{2!2!}=6",
+        "explanation": "검정 공 두 개이려면 카드 1과 4가 각각 두 번 나와야 한다. 남아 있는 블록 중 여섯 개가 강조된다.",
+        "sceneState": {
+          "phase": "intersection",
+          "visible": [
+            "condition-outcomes",
+            "success-outcomes"
+          ],
+          "highlight": "E-and-F",
+          "denominator": 70,
+          "numerator": 6
+        }
+      },
+      {
+        "title": "조건부확률의 분모 교체",
+        "math": "P(F\\mid E)=\\frac{P(E\\cap F)}{P(E)}=\\frac{6/256}{70/256}=\\frac6{70}=\\frac3{35}",
+        "explanation": "전체 256개 대신 조건을 만족한 70개를 새 표본공간으로 사용한다.",
+        "sceneState": {
+          "phase": "result",
+          "visible": [
+            "condition-outcomes",
+            "success-outcomes",
+            "result"
+          ],
+          "highlight": "E-and-F",
+          "denominator": 70,
+          "numerator": 6
+        }
+      }
+    ],
+    "verification": {
+      "method": "4^4개의 카드 순서열 전수 열거",
+      "checks": [
+        "전체 결과 256개, E 70개, E∩F 6개.",
+        "공 개수별 경우 분할 16+48+6=70.",
+        "조건부확률 6/70=3/35이며 공식 정답 ④와 일치."
+      ],
+      "notCopied": "풀이와 256개 표본공간은 독립 생성"
+    }
+  }
+]

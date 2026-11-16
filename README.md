@@ -12,9 +12,9 @@ AI를 활용해 수능 수학 수록 대상 **전체 329문항의 풀이와 시�
 
 ## 웹에서 보기
 
-별도 설치 없이 **[jblee.app](https://jblee.app)**에서 바로 볼 수 있도록 공개합니다.
+별도 설치 없이 **[jblee.app](https://jblee.app)**에서 바로 볼 수 있습니다. 이 저장소는 학습 자료의 소스를 공유합니다.
 
-시각화 주소: **[수능 수학 시각화](https://jblee.app/College-Scholastic-Ability-Test/)**.
+시각화 주소: **[수능 수학 시각화](https://jblee.app/notes/math/)**.
 
 ## 수록 내용
 
@@ -39,9 +39,9 @@ npm run preview
 
 [http://localhost:4173](http://localhost:4173)에서 열 수 있습니다. Windows PowerShell에서 실행 정책 오류가 나면 `npm` 대신 `npm.cmd`를 사용하세요.
 
-## 배포 및 검증
+## 검증
 
-`main`에 올린 변경은 GitHub Actions에서 데이터 검사, 테스트, 빌드를 거쳐 GitHub Pages에 배포됩니다. 최초 한 번 저장소의 **Settings → Pages → Source**를 **GitHub Actions**로 설정해야 합니다. [GitHub의 배포 안내](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
+문항 데이터와 시각화, 풀이 관련 테스트는 다음 명령으로 확인할 수 있습니다.
 
 ```sh
 npm run check:data
